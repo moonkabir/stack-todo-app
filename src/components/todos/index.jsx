@@ -1,4 +1,5 @@
 import React from 'react';
+import shortid from 'shortid';
 import {Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 import ListView from './../listview';
@@ -30,15 +31,40 @@ class Todos extends React.Component {
         searchTerm: ''
     };
     
-    toggleSelect = todoId =>{}
-    toggleComplete = todoId =>{}
-    handleSearch = () =>{}
+    toggleSelect = todoId =>{
+        const todos = [...this.state.todos];
+        const todo = todos.find( t => t.id === todoId);
+        todo.isSelect = !todo.isSelect;
+
+        this.setState({todos});
+    };
+    
+    toggleComplete = todoId =>{
+        const todos = [...this.state.todos];
+        const todo = todos.find( t => t.id === todoId);
+        todo.isComplete = !todo.isComplete;
+
+        this.setState({todos});
+    };
+
+    handleSearch = () =>{};
+
     toggleForm = () =>{
         this.setState({
             isOpenTodoForm: !this.state.isOpenTodoForm,
         })
+    };
+
+    createTodo = todo => {
+        todo.id = shortid.generate()
+        todo.time = new Date()
+        todo.isComplete = false
+        todo.isSelect = false
+
+        const todos = [todo, ...this.state.todos]
+        this.setState({todos})
+        this.toggleForm();
     }
-    createTodo = todo =>{}
 
     render() {
         return (
