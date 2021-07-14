@@ -45,3 +45,5 @@ class CreateTodoForm extends React.Component {
         )
     }
 }
+
+export default CreateTodoForm;
