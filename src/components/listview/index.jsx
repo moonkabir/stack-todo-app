@@ -10,7 +10,7 @@ const ListItem = ({ todo, toggleSelect, toggleComplete }) =>{
                 type="checkbox"
                 id={todo.id}
                 checked={todo.isSelect}
-                onChange = {() => toggleSelect(todo.id)}
+                onChange = { () => toggleSelect(todo.id)}
             />
             <div className="mx-3">
                 <h4>{todo.text}</h4>

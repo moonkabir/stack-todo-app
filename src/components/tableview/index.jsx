@@ -55,7 +55,7 @@ const Tableview = ({ todos, toggleSelect, toggleComplete }) =>(
 );
 
 Tableview.propTypes = {
-    todos: PropTypes.object.isRequired,
+    todos: PropTypes.array.isRequired,
     toggleSelect: PropTypes.func.isRequired,
     toggleComplete: PropTypes.func.isRequired,
 };
