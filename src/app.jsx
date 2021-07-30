@@ -1,8 +1,6 @@
 import React from 'react';
 import {Container, Row, Col} from 'reactstrap'
 import Todos from './components/todos';
-
-
 function App(){
     return(
         <Container>

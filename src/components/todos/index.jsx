@@ -1,7 +1,6 @@
 import React from 'react';
 import shortid from 'shortid';
 import {Modal, ModalHeader, ModalBody } from 'reactstrap';
-
 import ListView from './../listview';
 import TableView from './../tableview';
 import CreateTodoForm from './../create-todo-form';
@@ -41,20 +40,17 @@ class Todos extends React.Component {
         filter: 'all'
     };
     
-    toggleSelect = todoId =>{
+    toggleSelect = todoId => {
         const todos = [...this.state.todos];
         const todo = todos.find( t => t.id === todoId);
         todo.isSelect = !todo.isSelect;
-
-        this.setState({todos});
-        // console.log({todos});
+        this.setState({todo});
     };
     
-    toggleComplete = todoId =>{
+    toggleComplete = (todoId) => {
         const todos = [...this.state.todos];
         const todo = todos.find( t => t.id === todoId);
         todo.isComplete = !todo.isComplete;
-
         this.setState({todos});
     };
 
@@ -118,9 +114,9 @@ class Todos extends React.Component {
 
     performFilter = todos =>{
         const{ filter } = this.state;
-        if(filter == "completed"){
+        if(filter === "completed"){
             return todos.filter(todo=> todo.isComplete)
-        }else if(filter == "running"){
+        }else if(filter === "running"){
             return todos.filter(todo=> !todo.isComplete)
         }else{
             return todos;
@@ -133,14 +129,14 @@ class Todos extends React.Component {
         return this.state.view === 'list' ? (
             <ListView 
                 todos={todos}
-                toggleSelect={this.state.toggleSelect}
-                toggleComplete={this.state.toggleComplete}
+                toggleSelect={this.toggleSelect}
+                toggleComplete={this.toggleComplete}
             />
         ) : (
             <TableView 
                 todos={todos}
-                toggleSelect={this.state.toggleSelect}
-                toggleComplete={this.state.toggleComplete}
+                toggleSelect={this.toggleSelect}
+                toggleComplete={this.toggleComplete}
             />
         )
     }
